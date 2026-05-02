@@ -626,10 +626,15 @@
       color: var(--green-deep);
     }
     .cta-final .whatsapp-link {
+      display: block;          /* Forza il testo ad andare sotto il bottone */    
       color: var(--rose);
-      margin-top: 2rem;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      opacity: 0.8;
     }
-    .cta-final .whatsapp-link a { color: var(--rose); }
+    .cta-final .whatsapp-link a { color: var(--rose);
+     text-decoration: underline;
+    }
 
     /* ============================================
        FOOTER
@@ -916,9 +921,8 @@
         </div>
         <a class="btn" href="https://corsi.danz-up.com/offers/danz-up-labs/checkout">Iscriviti a Labs</a>
         <p class="whatsapp-link">
-          Hai domande?&nbsp;
-          <a href="https://wa.me/393292194086" target="_blank" rel="noopener">Scrivici su WhatsApp</a>
-          &nbsp;prima di iscriverti.
+    Hai domande? <a href="https://wa.me/393292194086" target="_blank" rel="noopener">Scrivici su WhatsApp</a> prima di iscriverti.
+</p>
         </p>
       </div>
     </div>
