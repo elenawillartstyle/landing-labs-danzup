@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DANZ-UP Labs · Formazione continua per chi insegna danza</title>
+  <meta name="description" content="La membership annuale per insegnanti e direttrici di scuole di danza. Una diretta al mese, una videoteca che cresce, e tutte le risorse pratiche degli esperti che la attraversano. 118€ all'anno.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://labs-danzup.netlify.app/">
+  <meta property="og:title" content="DANZ-UP Labs · Formazione continua per chi insegna danza">
+  <meta property="og:description" content="La membership annuale per chi insegna danza. Una diretta al mese, videoteca completa, risorse pratiche. 118€ all'anno.">
+  <meta property="og:image" content="https://labs-danzup.netlify.app/assets/images/og-labs.jpg">
+  <meta property="og:locale" content="it_IT">
+
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon (riutilizza quella della Segreteria) -->
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '926996002799325');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=926996002799325&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel Code -->
+
+  <style>
+    /* ============================================
+       DESIGN TOKENS — DANZ-UP Labs
+       ============================================ */
+    :root {
+      --green: #426441;
+      --green-deep: #2f4a2e;
+      --offwhite: #F8F6ED;
+      --grey: #E4DFDF;
+      --rose: #E8CCC8;        /* antique rose - accent Labs */
+      --rose-logo: #E2BFB9;
+      --ink: #2a2a2a;
+      --ink-soft: #555;
+      --max: 1120px;
+      --gutter: clamp(20px, 5vw, 48px);
+      --radius: 18px;
+      --shadow-soft: 0 2px 24px rgba(66, 100, 65, 0.08);
+    }
+
+    /* ============================================
+       RESET & BASE
+       ============================================ */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--offwhite);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    img { max-width: 100%; display: block; height: auto; }
+    a { color: var(--green); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    p { margin: 0 0 1em; }
+
+    /* ============================================
+       TYPOGRAPHY
+       ============================================ */
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--green);
+      margin: 0 0 0.5em;
+    }
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 500;
+    }
+    h1 em, .italic {
+      font-style: italic;
+      font-weight: 500;
+      color: var(--green-deep);
+    }
+    h2 {
+      font-size: clamp(1.9rem, 4.5vw, 3rem);
+      font-weight: 500;
+    }
+    h2 em { font-style: italic; }
+    h3 {
+      font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      letter-spacing: -0.005em;
+      color: var(--ink);
+    }
+    .eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin: 0 0 1.2rem;
+      display: inline-block;
+    }
+    .lead {
+      font-size: clamp(1.05rem, 1.6vw, 1.18rem);
+      color: var(--ink-soft);
+      max-width: 60ch;
+    }
+
+    /* ============================================
+       LAYOUT
+       ============================================ */
+    .wrap {
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding-left: var(--gutter);
+      padding-right: var(--gutter);
+    }
+    section {
+      padding: clamp(60px, 9vw, 110px) 0;
+    }
+    .section-rose { background: var(--rose); }
+    .section-grey { background: var(--grey); }
+    .section-cream { background: var(--offwhite); }
+    .section-divider {
+      border-top: 1px solid rgba(66, 100, 65, 0.12);
+    }
+
+    /* ============================================
+       BUTTONS
+       ============================================ */
+    .btn {
+      display: inline-block;
+      padding: 16px 32px;
+      background: var(--green);
+      color: var(--offwhite);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.98rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      border-radius: 999px;
+      transition: all 0.2s ease;
+      border: 2px solid var(--green);
+      text-align: center;
+    }
+    .btn:hover {
+      background: var(--green-deep);
+      border-color: var(--green-deep);
+      color: var(--offwhite);
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--green);
+    }
+    .btn-outline:hover {
+      background: var(--green);
+      color: var(--offwhite);
+    }
+    .whatsapp-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: var(--green);
+      margin-top: 1.5rem;
+    }
+    .whatsapp-link svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* ============================================
+       HERO
+       ============================================ */
+    .hero {
+      background: linear-gradient(180deg, var(--rose) 0%, var(--rose) 70%, var(--offwhite) 100%);
+      padding: clamp(80px, 12vw, 140px) 0 clamp(60px, 9vw, 100px);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(248, 246, 237, 0.4) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+    }
+    .hero h1 {
+      color: var(--green-deep);
+      margin-bottom: 1.2rem;
+    }
+    .hero .lead {
+      font-size: clamp(1.1rem, 1.8vw, 1.25rem);
+      color: var(--ink);
+      margin-bottom: 2rem;
+      max-width: 56ch;
+    }
+    .hero-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2.4rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+    @media (min-width: 640px) {
+      .hero-features { grid-template-columns: 1fr 1fr; gap: 0.6rem 2rem; }
+    }
+    .hero-features li {
+      padding-left: 26px;
+      position: relative;
+      font-size: 0.97rem;
+      color: var(--ink);
+    }
+    .hero-features li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.2rem 1.8rem;
+    }
+    .hero-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: var(--green-deep);
+    }
+    .hero-price strong {
+      font-weight: 600;
+      font-size: 1.6rem;
+    }
+    .hero-price small {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.02em;
+      font-style: normal;
+    }
+
+    /* ============================================
+       PROBLEM
+       ============================================ */
+    .problem-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .problem-wrap .lead {
+      margin: 0 auto 1.2rem;
+    }
+    .problem-close {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(66, 100, 65, 0.18);
+      font-size: 1.05rem;
+      color: var(--ink);
+      font-style: italic;
+      max-width: 60ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ============================================
+       FEATURES (Cosa contiene)
+       ============================================ */
+    .features-head {
+      max-width: 680px;
+      margin: 0 auto 4rem;
+      text-align: center;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    @media (min-width: 720px) {
+      .features-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem 3rem; }
+    }
+    .feature-card {
+      padding: 0;
+    }
+    .feature-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 2.6rem;
+      font-weight: 500;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+    .feature-card h3 { margin-bottom: 0.5rem; }
+    .feature-card p { color: var(--ink-soft); margin: 0; }
+
+    /* ============================================
+       THEMES (Lista temi)
+       ============================================ */
+    .themes {
+      background: var(--green);
+      color: var(--offwhite);
+    }
+    .themes .eyebrow,
+    .themes h2,
+    .themes h2 em {
+      color: var(--rose);
+    }
+    .themes-head {
+      max-width: 720px;
+      margin: 0 auto 3rem;
+      text-align: center;
+    }
+    .themes-head p {
+      color: rgba(248, 246, 237, 0.85);
+      max-width: 56ch;
+      margin: 0 auto;
+    }
+    .themes-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem 0.7rem;
+      max-width: 920px;
+      margin: 0 auto 2rem;
+    }
+    .theme-chip {
+      display: inline-block;
+      padding: 10px 20px;
+      border: 1px solid rgba(232, 204, 200, 0.4);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      color: var(--offwhite);
+      background: rgba(232, 204, 200, 0.06);
+      transition: all 0.2s ease;
+    }
+    .theme-chip:hover { background: rgba(232, 204, 200, 0.14); }
+    .themes-tagline {
+      text-align: center;
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      color: var(--rose);
+      margin-top: 1.5rem;
+    }
+
+    /* ============================================
+       SONIA (Chi cura)
+       ============================================ */
+    .sonia {
+      background: var(--offwhite);
+    }
+    .sonia-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    @media (min-width: 800px) {
+      .sonia-grid { grid-template-columns: minmax(280px, 1fr) 1.4fr; gap: 4rem; }
+    }
+    .sonia-photo-wrap {
+      position: relative;
+    }
+    .sonia-photo {
+      width: 100%;
+      max-width: 380px;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
+    }
+    .sonia-photo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 18px -18px -18px 18px;
+      background: var(--rose);
+      border-radius: var(--radius);
+      z-index: 0;
+    }
+    .sonia-photo { position: relative; z-index: 1; }
+    .sonia-text h2 { margin-bottom: 1.5rem; }
+    .sonia-text p { color: var(--ink); }
+    .sonia-quote {
+      margin-top: 2rem;
+      padding: 1.5rem 0 0;
+      border-top: 2px solid var(--rose);
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--green-deep);
+      line-height: 1.4;
+    }
+    .sonia-byline {
+      display: block;
+      margin-top: 0.8rem;
+      font-family: 'Inter', sans-serif;
+      font-style: normal;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      color: var(--ink-soft);
+      text-transform: uppercase;
+    }
+
+    /* ============================================
+       OBJECTIONS
+       ============================================ */
+    .objections-head { max-width: 680px; margin: 0 auto 3.5rem; text-align: center; }
+    .objections-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .objection {
+      background: var(--offwhite);
+      border: 1px solid var(--grey);
+      border-radius: var(--radius);
+      padding: 2rem 2rem;
+    }
+    .objection-q {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.35rem;
+      color: var(--green);
+      margin: 0 0 0.8rem;
+      line-height: 1.3;
+    }
+    .objection p { margin: 0; color: var(--ink); }
+
+    /* ============================================
+       BONUS
+       ============================================ */
+    .bonus { background: var(--rose); }
+    .bonus-head { max-width: 680px; margin: 0 auto 3rem; text-align: center; }
+    .bonus-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    @media (min-width: 720px) {
+      .bonus-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .bonus-card {
+      background: var(--offwhite);
+      padding: 2rem;
+      border-radius: var(--radius);
+    }
+    .bonus-card h3 {
+      color: var(--green);
+      margin-bottom: 0.6rem;
+    }
+    .bonus-card p { margin: 0; color: var(--ink); }
+
+    /* ============================================
+       TESTIMONIALS
+       ============================================ */
+    .testimonials-head { max-width: 680px; margin: 0 auto 3.5rem; text-align: center; }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.8rem;
+    }
+    @media (min-width: 720px) {
+      .testimonials-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    }
+    .testimonial {
+      background: var(--offwhite);
+      border: 1px solid var(--grey);
+      border-radius: var(--radius);
+      padding: 2rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .testimonial-quote {
+      font-size: 0.97rem;
+      color: var(--ink);
+      line-height: 1.6;
+      margin: 0 0 1.5rem;
+      flex-grow: 1;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--grey);
+    }
+    .author-initial {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--green);
+      color: var(--offwhite);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    .author-meta { line-height: 1.3; }
+    .author-name {
+      display: block;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--ink);
+    }
+    .author-role {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+    }
+
+    /* ============================================
+       FAQ
+       ============================================ */
+    .faq-head { max-width: 680px; margin: 0 auto 3rem; text-align: center; }
+    .faq-list { max-width: 780px; margin: 0 auto; }
+    .faq-item {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--grey);
+    }
+    .faq-item:first-child { border-top: 1px solid var(--grey); }
+    .faq-q {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--green);
+      margin: 0 0 0.6rem;
+    }
+    .faq-a { margin: 0; color: var(--ink); }
+
+    /* ============================================
+       FINAL CTA
+       ============================================ */
+    .cta-final {
+      background: var(--green);
+      color: var(--offwhite);
+      text-align: center;
+    }
+    .cta-final .eyebrow,
+    .cta-final h2,
+    .cta-final h2 em {
+      color: var(--rose);
+    }
+    .cta-final-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .cta-final-recap {
+      font-size: 1rem;
+      color: rgba(248, 246, 237, 0.85);
+      margin: 1.5rem 0 2rem;
+      line-height: 1.7;
+    }
+    .cta-final-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 500;
+      color: var(--rose);
+      margin-bottom: 0.3rem;
+    }
+    .cta-final-price small {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      color: rgba(248, 246, 237, 0.7);
+      letter-spacing: 0.04em;
+      margin-top: 0.4rem;
+      font-weight: 400;
+    }
+    .cta-final .btn {
+      background: var(--rose);
+      color: var(--green-deep);
+      border-color: var(--rose);
+      margin-top: 1.5rem;
+      font-size: 1.05rem;
+      padding: 18px 38px;
+    }
+    .cta-final .btn:hover {
+      background: var(--offwhite);
+      border-color: var(--offwhite);
+      color: var(--green-deep);
+    }
+    .cta-final .whatsapp-link {
+      color: var(--rose);
+      margin-top: 2rem;
+    }
+    .cta-final .whatsapp-link a { color: var(--rose); }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    footer {
+      background: var(--green-deep);
+      color: rgba(248, 246, 237, 0.7);
+      padding: 3rem 0 2rem;
+      font-size: 0.88rem;
+    }
+    footer .wrap { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; }
+    footer p { margin: 0; }
+    footer a { color: rgba(248, 246, 237, 0.85); text-decoration: underline; }
+    footer a:hover { color: var(--rose); }
+
+    /* ============================================
+       UTILITIES
+       ============================================ */
+    .center { text-align: center; }
+    .mt-0 { margin-top: 0; }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <span class="eyebrow">Membership formativa · Per chi insegna danza</span>
+      <h1>La formazione che continua. <em>Anche tra una lezione e l'altra.</em></h1>
+      <p class="lead">
+        Labs è la membership annuale per insegnanti e direttrici di scuole di danza.
+        Una diretta al mese, una videoteca che cresce, e tutte le risorse pratiche degli esperti
+        che la attraversano — dalla pedagogia ai social, dall'anatomia all'alimentazione.
+      </p>
+      <ul class="hero-features">
+        <li>Una diretta in live ogni mese su Zoom</li>
+        <li>Videoteca con tutte le puntate passate</li>
+        <li>Risorse, checklist e guide degli ospiti</li>
+        <li>Accesso 24/7, da casa, quando vuoi</li>
+      </ul>
+      <div class="hero-cta">
+        <a class="btn" href="https://corsi.danz-up.com/offers/danz-up-labs/checkout">Iscriviti a Labs</a>
+        <div class="hero-price">
+          <strong>118€</strong>
+          <small>accesso annuale completo</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROBLEMA ===== -->
+  <section class="section-cream">
+    <div class="wrap">
+      <div class="problem-wrap">
+        <span class="eyebrow">Il problema</span>
+        <h2>Tra una lezione e l'altra, <em>quanta formazione ti resta davvero?</em></h2>
+        <p class="lead">
+          Tra le ore in sala, le riunioni, la segreteria, le famiglie — il tempo per studiare è quello
+          che si comprime per primo. E quando finalmente decidi di formarti, davanti a te c'è una galassia
+          di corsi, webinar, masterclass: tutti diversi, nessuno coordinato. Ne compri uno, ne segui metà,
+          ne perdi la traccia.
+        </p>
+        <p class="problem-close">
+          Labs nasce per questo: un solo posto in cui la formazione torna ad essere continuativa, varia,
+          e fatta da persone che sanno di cosa parlano — perché lavorano nel mondo della danza ogni giorno.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COSA CONTIENE ===== -->
+  <section class="section-grey">
+    <div class="wrap">
+      <div class="features-head">
+        <span class="eyebrow">Cosa contiene</span>
+        <h2>Un appuntamento al mese. <em>E un archivio che cresce con te.</em></h2>
+      </div>
+      <div class="features-grid">
+        <article class="feature-card">
+          <span class="feature-num">01</span>
+          <h3>Una diretta al mese</h3>
+          <p>Ogni mese una puntata in diretta su Zoom con un'esperto/a su un tema diverso. Puoi partecipare e fare domande, oppure recuperare con calma in registrazione.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-num">02</span>
+          <h3>Videoteca completa</h3>
+          <p>Tutte le puntate passate restano sulla piattaforma. Un archivio di formazione che cresce insieme a te, mese dopo mese.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-num">03</span>
+          <h3>Risorse pratiche degli ospiti</h3>
+          <p>Dopo ogni diretta: checklist, guide, schemi, video di approfondimento. Materiali da scaricare e usare in sala dal giorno dopo.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-num">04</span>
+          <h3>Esperti diversi, ogni mese</h3>
+          <p>Non un'unica voce. Labs porta ogni mese una persona diversa: pedagogista, fisioterapista, social strategist, coach. Perché insegnare danza non è un mestiere a una dimensione.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TEMI ===== -->
+  <section class="themes">
+    <div class="wrap">
+      <div class="themes-head">
+        <span class="eyebrow">Cosa attraversa Labs</span>
+        <h2>I temi che fanno <em>davvero</em> la differenza in sala — e fuori dalla sala.</h2>
+        <p>Una lista in evoluzione, non un programma chiuso. Ogni mese una sfumatura diversa di quello che vuol dire insegnare danza nel 2026.</p>
+      </div>
+      <div class="themes-list">
+        <span class="theme-chip">Pedagogia della danza</span>
+        <span class="theme-chip">Repertorio</span>
+        <span class="theme-chip">Musica nella classe</span>
+        <span class="theme-chip">Anatomia applicata</span>
+        <span class="theme-chip">Fisiotecnica</span>
+        <span class="theme-chip">Alimentazione</span>
+        <span class="theme-chip">Strategie social</span>
+        <span class="theme-chip">Leadership</span>
+        <span class="theme-chip">IA e metodologia</span>
+        <span class="theme-chip">Bodyshame e immagine corporea</span>
+        <span class="theme-chip">Ansia da prestazione</span>
+        <span class="theme-chip">Progetti per le scuole</span>
+        <span class="theme-chip">Fondi europei</span>
+      </div>
+      <p class="themes-tagline">…e tanti altri ancora, perché il calendario continua a scriversi insieme alle persone che lo abitano.</p>
+    </div>
+  </section>
+
+  <!-- ===== CHI CURA ===== -->
+  <section class="sonia">
+    <div class="wrap">
+      <div class="sonia-grid">
+        <div class="sonia-photo-wrap">
+          <img class="sonia-photo" src="/assets/images/sonia-greco.webp" alt="Sonia Greco — fondatrice DANZ-UP">
+        </div>
+        <div class="sonia-text">
+          <span class="eyebrow">Chi cura</span>
+          <h2>Sonia Greco</h2>
+          <p>
+            Sonia insegna danza da oltre 40 anni. È esaminatrice internazionale per la
+            Royal Academy of Dance e si occupa della formazione di chi insegna. Dopo aver
+            fondato DANZ-UP nel 2021, ha pensato Labs come uno spazio diverso: non un corso
+            suo, ma una stanza in cui invita esperte ed esperti del mondo della danza per
+            affrontare ogni mese i temi che servono davvero a chi sta in sala.
+          </p>
+          <p><strong>Lei fa da regia. Le voci sono tante.</strong></p>
+          <blockquote class="sonia-quote">
+            "Insegnare è un lavoro che cambia ogni anno. La formazione non può fermarsi alla scuola."
+            <span class="sonia-byline">Sonia Greco · Fondatrice DANZ-UP</span>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OBIEZIONI ===== -->
+  <section class="section-cream section-divider">
+    <div class="wrap">
+      <div class="objections-head">
+        <span class="eyebrow">Forse stai pensando</span>
+        <h2>Tre frasi in cui <em>potresti riconoscerti.</em></h2>
+      </div>
+      <div class="objections-list">
+        <div class="objection">
+          <p class="objection-q">"Ho già abbastanza corsi che non finisco."</p>
+          <p>Esatto. Ed è il motivo per cui Labs non ti chiede di seguire tutto. Una diretta al mese — un'ora. Tutto il resto è lì quando ti serve davvero. Non perdi un'iscrizione: alimenti un archivio.</p>
+        </div>
+        <div class="objection">
+          <p class="objection-q">"I temi sono troppo diversi tra loro."</p>
+          <p>È la varietà che serve a chi insegna. La danza non vive solo di tecnica: vive di pedagogia, anatomia, social, comunicazione, alimentazione, gestione. Labs ti dà l'accesso a tutto questo senza dover cercare ogni volta il corso giusto.</p>
+        </div>
+        <div class="objection">
+          <p class="objection-q">"Non sono sicura di volermi impegnare per un anno."</p>
+          <p>Capito. Molti percorsi formativi chiedono ore che non hai. Labs è pensato al contrario: un appuntamento al mese, tutto il resto disponibile quando vuoi. Niente compiti, niente scadenze. La formazione ti aspetta, non ti corre dietro.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BONUS ===== -->
+  <section class="bonus">
+    <div class="wrap">
+      <div class="bonus-head">
+        <span class="eyebrow">Quello che è incluso</span>
+        <h2>Anche quello che <em>non ti aspetti.</em></h2>
+      </div>
+      <div class="bonus-grid">
+        <div class="bonus-card">
+          <h3>Sconto 10% su tutti i corsi DANZ-UP</h3>
+          <p>Per tutto il periodo della tua membership: ogni corso, ogni masterclass, ogni evento DANZ-UP è in promozione per te.</p>
+        </div>
+        <div class="bonus-card">
+          <h3>Il primo mese va in Nigeria</h3>
+          <p>Il primo mese di ogni nuova iscrizione viene devoluto alla <a href="https://www.instagram.com/leapofdanceacademy/" target="_blank" rel="noopener">Leap of Dance Academy</a>, una scuola di danza per bambini in difficoltà economica. La tua formazione fa anche la differenza.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIANZE ===== -->
+  <section class="section-cream">
+    <div class="wrap">
+      <div class="testimonials-head">
+        <span class="eyebrow">Dicono di Labs</span>
+        <h2>Chi è già <em>dentro Labs.</em></h2>
+      </div>
+      <div class="testimonials-grid">
+        <article class="testimonial">
+          <p class="testimonial-quote">"In questi giorni sono stata in trasferta per lavoro e il mattino ho iniziato le mie giornate mettendomi in pari con le video-lezioni di DANZ-UP Labs. Sonia Greco è riuscita a creare un validissimo strumento di aggiornamento e informazione che offre molti spunti di riflessione."</p>
+          <div class="testimonial-author">
+            <span class="author-initial">C</span>
+            <div class="author-meta">
+              <span class="author-name">Cristina Castagna</span>
+              <span class="author-role">Oltre La Danza · Noventa Vicentina</span>
+            </div>
+          </div>
+        </article>
+        <article class="testimonial">
+          <p class="testimonial-quote">"Insegno danza classica da 23 anni e trovo che DANZ-UP Labs sia un'opportunità di crescita formativa del Maestro, ma soprattutto di riflesso dell'allievo, che impara, assimila ed interiorizza nuove metodologie al passo con i tempi."</p>
+          <div class="testimonial-author">
+            <span class="author-initial">S</span>
+            <div class="author-meta">
+              <span class="author-name">Sabrina Farebbi</span>
+              <span class="author-role">ASD Il Sipario · Napoli</span>
+            </div>
+          </div>
+        </article>
+        <article class="testimonial">
+          <p class="testimonial-quote">"Partecipare agli incontri proposti sulla piattaforma DANZ-UP Labs è sempre stimolante. Trovo contributi interessanti ma soprattutto mi carico di una energia positiva grazie allo spirito di condivisione che rende speciale e per nulla scontato lo spazio a noi dedicato."</p>
+          <div class="testimonial-author">
+            <span class="author-initial">M</span>
+            <div class="author-meta">
+              <span class="author-name">Marta Cataliotti</span>
+              <span class="author-role">Palermo</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="section-grey">
+    <div class="wrap">
+      <div class="faq-head">
+        <span class="eyebrow">Domande frequenti</span>
+        <h2>Domande <em>che ci aspettiamo.</em></h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <p class="faq-q">Come partecipo alle dirette?</p>
+          <p class="faq-a">Sulla piattaforma trovi il link Zoom personale per ogni puntata. Se non puoi essere in live, la registrazione resta sulla piattaforma e la puoi recuperare quando vuoi.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-q">Cosa trovo sulla piattaforma?</p>
+          <p class="faq-a">Tutte le puntate passate, le risorse degli ospiti (checklist, guide, video), il calendario delle prossime dirette e l'accesso ai bonus.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-q">Come funziona il pagamento?</p>
+          <p class="faq-a">La membership Labs è di 118€ all'anno, con un unico pagamento al momento dell'iscrizione. Hai così accesso a tutte le dirette, alla videoteca completa e alle risorse degli ospiti per i 12 mesi successivi.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-q">Per chi è pensato Labs?</p>
+          <p class="faq-a">Per insegnanti, direttrici e direttori di scuole di danza che vogliono continuare a formarsi senza dover cercare ogni volta il corso giusto. Non servono prerequisiti: Labs è strutturato per accompagnarti, non per testarti.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA FINALE ===== -->
+  <section class="cta-final">
+    <div class="wrap">
+      <div class="cta-final-inner">
+        <span class="eyebrow">Entra in Labs</span>
+        <h2>Pronta a <em>cambiare passo?</em></h2>
+        <p class="cta-final-recap">
+          Una diretta al mese · Videoteca completa · Risorse pratiche<br>
+          Sconto 10% sui corsi DANZ-UP · Primo mese al progetto Nigeria
+        </p>
+        <div class="cta-final-price">
+          118€
+          <small>accesso annuale completo</small>
+        </div>
+        <a class="btn" href="https://corsi.danz-up.com/offers/danz-up-labs/checkout">Iscriviti a Labs</a>
+        <p class="whatsapp-link">
+          Hai domande?&nbsp;
+          <a href="https://wa.me/393292194086" target="_blank" rel="noopener">Scrivici su WhatsApp</a>
+          &nbsp;prima di iscriverti.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="wrap">
+      <p>© 2026 DANZ-UP · Tutti i diritti riservati · Sonia Greco · P.IVA 03979900366</p>
+      <p><a href="https://www.danz-up.com/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
