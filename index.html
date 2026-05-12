@@ -948,5 +948,42 @@
     </div>
   </footer>
 
+<script>
+  /* ============================================
+     UTM PROPAGATION — landing → checkout BiC
+     Legge gli UTM dalla query string della landing
+     e li propaga ai link CTA che puntano al checkout.
+     ============================================ */
+  (function () {
+    var UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+    var CHECKOUT_MATCH = 'corsi.danz-up.com/offers/danz-up-labs/checkout';
+
+    // 1. Legge UTM dalla query string corrente
+    var params = new URLSearchParams(window.location.search);
+    var utmPairs = [];
+    UTM_KEYS.forEach(function (key) {
+      var value = params.get(key);
+      if (value) {
+        utmPairs.push(encodeURIComponent(key) + '=' + encodeURIComponent(value));
+      }
+    });
+
+    // 2. Se nessun UTM presente, esce e non tocca i link (traffico organico/diretto)
+    if (utmPairs.length === 0) return;
+
+    var utmString = utmPairs.join('&');
+
+    // 3. Trova tutti i link che puntano al checkout BiC
+    var links = document.querySelectorAll('a[href*="' + CHECKOUT_MATCH + '"]');
+
+    // 4. Appende gli UTM all'href, gestendo correttamente ? o &
+    links.forEach(function (link) {
+      var href = link.getAttribute('href');
+      var separator = href.indexOf('?') === -1 ? '?' : '&';
+      link.setAttribute('href', href + separator + utmString);
+    });
+  })();
+</script>
+
 </body>
 </html>
